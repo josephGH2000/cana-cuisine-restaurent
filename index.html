@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cana Cuisine — Rajahmundry | Homemade Taste & Hygiene</title>
+    <meta name="description"
+        content="Cana Cuisine, Rajahmundry — Homemade-taste meals prepared with strict hygiene. Order online or visit us.">
+    <meta name="theme-color" content="#c65314">
+
+    <!-- Google Fonts (serif for headings, system UI fallback for body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap (keeps your layout, we use classes) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --dark: #c65314;
+            /* primary dark */
+            --mid: #e26a2c;
+            /* secondary */
+            --accent: #ff8243;
+            /* primary accent */
+            --soft: #ffae6a;
+            /* soft panel */
+            --cream: #ffd792;
+            /* light background */
+            --card-bg: #fff7f0;
+            --muted: #5a3b2b;
+        }
+
+        /* Base */
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            color: #33221a;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--soft) 40%, #fff3ea 100%);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 14px 18px;
+        }
+
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .brand .logo-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--mid), var(--dark));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-family: 'Merriweather', serif;
+            box-shadow: 0 6px 18px rgba(198, 83, 20, 0.12);
+        }
+
+        .brand h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 20px;
+            margin: 0;
+            color: var(--muted);
+        }
+
+        /* Hero */
+        .hero {
+            max-width: 1200px;
+            margin: 26px auto;
+            padding: 26px;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 24px;
+        }
+
+        @media(max-width:920px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hero-left {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 250, 245, 0.85));
+            border-radius: 14px;
+            padding: 28px;
+            box-shadow: 0 12px 30px rgba(198, 83, 20, 0.06);
+        }
+
+        .hero-left h2 {
+            font-family: 'Merriweather', serif;
+            color: var(--dark);
+            margin-bottom: 8px;
+            font-size: 28px;
+        }
+
+        .hero-left p.lead {
+            color: #4b2f22;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--mid), var(--accent));
+            border: none;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(198, 83, 20, 0.12);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(51, 34, 26, 0.08);
+            color: var(--dark);
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .hero-photo {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 250, 245, 0.8));
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 28px rgba(196, 83, 20, 0.06);
+            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 12px 14px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+        }
+
+        .open-pill {
+            background: linear-gradient(90deg, var(--soft), var(--cream));
+            color: var(--dark);
+            padding: 8px 12px;
+            border-radius: 40px;
+            font-weight: 700;
+        }
+
+        /* Menu grid (keeps your 4 cards, ordered) */
+        .menu-wrap {
+            max-width: 1200px;
+            margin: 12px auto;
+            padding: 6px 18px;
+        }
+
+        .row.g-4 {
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: none;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-shadow: 0 8px 26px rgba(198, 83, 20, 0.06);
+        }
+
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid rgba(224, 210, 195, 0.6);
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 16px;
+            flex: 1;
+        }
+
+        .card-text {
+            color: #523a2c;
+            line-height: 1.45;
+            font-size: 0.95rem;
+        }
+
+        .order-btn {
+            margin-top: auto;
+            background: linear-gradient(135deg, var(--mid), var(--accent));
+            color: #fff;
+            border-radius: 10px;
+            padding: 10px 14px;
+            border: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        /* Online ordering row */
+        .online {
+            max-width: 1200px;
+            margin: 18px auto;
+            padding: 14px;
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            border-radius: 12px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.85), rgba(255, 250, 245, 0.85));
+            box-shadow: 0 10px 26px rgba(198, 83, 20, 0.04);
+            justify-content: center;
+        }
+
+        .online .partner {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .partner img {
+            height: 56px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .divider {
+            width: 2px;
+            height: 70px;
+            background: linear-gradient(180deg, var(--mid), var(--dark));
+            border-radius: 2px;
+        }
+
+        /* Reviews */
+        .reviews {
+            max-width: 1200px;
+            margin: 18px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px;
+            padding: 0 18px;
+        }
+
+        .review {
+            background: linear-gradient(180deg, #fffdf9, #fff6f0);
+            border-left: 6px solid var(--mid);
+            padding: 14px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(198, 83, 20, 0.04);
+        }
+
+        /* About / contact */
+        .about {
+            max-width: 1200px;
+            margin: 18px auto;
+            padding: 18px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, #fff8ef, #fff1e6);
+            box-shadow: 0 10px 26px rgba(198, 83, 20, 0.04);
+        }
+
+        footer {
+            text-align: center;
+            padding: 16px;
+            color: #5a3b2b;
+            font-size: 0.9rem;
+        }
+
+        /* Small screens */
+        @media (max-width: 700px) {
+            .hero {
+                padding: 12px;
+                gap: 12px;
+            }
+
+            .hero-right {
+                order: -1;
+            }
+
+            /* show image above on small screens */
+            .card-img-top {
+                height: 180px;
+            }
+
+            .online {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .divider {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="brand">
+                <div class="logo-circle">CC</div>
+                <div>
+                    <h1>Cana Cuisine</h1>
+                    <div style="font-size:12px; color:#6b3e2a;">Rajahmundry — Homemade taste & hygiene</div>
+                </div>
+            </div>
+
+            <nav class="d-none d-md-flex align-items-center gap-2">
+                <a href="./index.html" class="btn-outline">Home</a>
+                <a href="#menu" class="btn-outline">Menu</a>
+                <a href="#contact" class="btn-outline">Contact</a>
+                <a href="#about" class="btn-outline">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-left">
+            <h2 id="hero-title">Welcome to Cana Cuisine</h2>
+            <p class="lead">Hearty, homemade-taste meals prepared with strict hygiene and fresh local ingredients.
+                Dine-in, takeaway, or order online — we’re always ready.</p>
+
+            <div class="cta-row">
+                <!-- update phone number in href -->
+                <a class="btn-primary"
+                    href="https://wa.me/919381963134?text=Hi%20Cana%20Cuisine%2C%20I%20want%20to%20order"
+                    target="_blank" rel="noopener">Order via WhatsApp</a>
+                <a class="btn-outline" href="#menu">View Menu</a>
+            </div>
+
+            <p style="margin-top:12px; color:#5a3b2b; font-size:0.95rem;">
+                Open 24/7 — Friendly staff — Fresh ingredients — Hygienic kitchen
+            </p>
+        </div>
+
+        <aside class="hero-right" aria-hidden="false">
+            <div class="hero-photo">
+                <!-- replace with a 1200px wide, high-quality photo (landscape) -->
+                <img src="https://lh3.googleusercontent.com/geougc-cs/AB3l90BtYE-vSeKERWamUUm0XUtp061TDmqlBGzAioOIbUUfnpOBZyTOik0yMvhOWC2XFnIL8596Y_RMTcyYVReNjX7R92IFCjtGoksZhn6SYjHxpwqFjGO1V8vMC-LpSR89JtvXcLYEHw=s3072-w3072-h1460-rw"
+                    alt="Cana Cuisine interior" loading="lazy">
+            </div>
+
+            <div class="info-card" role="region" aria-label="quick info">
+                <div>
+                    <div style="font-weight:700; color:var(--muted)">Cana Cuisine — Rajahmundry</div>
+                    <div style="color:#7b5a47; font-size:13px;">Home-style meals & hygiene</div>
+                </div>
+                <div class="open-pill" aria-hidden="true">Always Open</div>
+            </div>
+        </aside>
+    </section>
+
+    <!-- MENU GRID (4 cards) -->
+    <section id="menu" class="menu-wrap">
+        <div class="row g-4">
+            <!-- Card 1 -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <article class="card" aria-labelledby="d1">
+                    <img class="card-img-top" src="./chicken-biryani.jpg" alt="Chicken Biryani - Cana Cuisine"
+                        loading="lazy" width="1200">
+                    <div class="card-body">
+                        <h3 id="d1">Chicken Biryani — ₹130</h3>
+                        <p class="card-text">Fragrant basmati rice layered with marinated chicken, spices and saffron —
+                            slow-cooked for rich home-style flavour.</p>
+                        <a class="order-btn"
+                            href="https://wa.me/919381963134?text=I%20want%20to%20order%20Chicken%20Biryani"
+                            target="_blank" rel="noopener">Order biryani</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <article class="card" aria-labelledby="d2">
+                    <img class="card-img-top" src="./fishpulusu.jpg" alt="Fish Pulusu - Cana Cuisine" loading="lazy"
+                        width="1200">
+                    <div class="card-body">
+                        <h3 id="d2">Chepala Pulusu — ₹100</h3>
+                        <p class="card-text">Traditional Andhra fish curry with tamarind, spices and simmered flavors —
+                            tangy and comforting.</p>
+                        <a class="order-btn"
+                            href="https://wa.me/919381963134?text=I%20want%20to%20order%20Fish%20Pulusu" target="_blank"
+                            rel="noopener">Order fish pulusu</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <article class="card" aria-labelledby="d3">
+                    <img class="card-img-top" src="./friedrice.jpg" alt="Fried Rice - Cana Cuisine" loading="lazy"
+                        width="1200">
+                    <div class="card-body">
+                        <h3 id="d3">veg fried Rice — ₹100</h3>
+                        <p class="card-text">Savory wok-tossed fried rice with fresh vegetables & house sauces — quick,
+                            flavorful comfort food.</p>
+                        <a class="order-btn" href="https://wa.me/919381963134?text=I%20want%20to%20order%20Fried%20Rice"
+                            target="_blank" rel="noopener">Order veg friedrice</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <article class="card" aria-labelledby="d4">
+                    <img class="card-img-top" src="./curries.jpg" alt="Curries - Cana Cuisine" loading="lazy"
+                        width="1200">
+                    <div class="card-body">
+                        <h3 id="d4">Indian Curries — from ₹50</h3>
+                        <p class="card-text">Range of curries from mild butter to spicy vindaloo — slow-cooked with
+                            home-style spice blends.</p>
+                        <a class="order-btn" href="https://wa.me/919381963134?text=I%20want%20to%20order%20Curries"
+                            target="_blank" rel="noopener">Order curries</a>
+                    </div>
+                </article>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <article class="card" aria-labelledby="d4">
+                    <img class="card-img-top" src="./curries.jpg" alt="Curries - Cana Cuisine" loading="lazy"
+                        width="1200">
+                    <div class="card-body">
+                        <h3 id="d4">chicken fried rice — from ₹140</h3>
+                        <p class="card-text">Chicken fried rice with tender chicken pieces, fresh veggies, and fragrant spices — cooked in traditional wok style.</p>
+                        <a class="order-btn" href="https://wa.me/919381963134?text=I%20want%20to%20order%20Curries"
+                            target="_blank" rel="noopener">Order chicken friedrice</a>
+                    </div>
+                </article>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <article class="card" aria-labelledby="d4">
+                    <img class="card-img-top" src="./curries.jpg" alt="Curries - Cana Cuisine" loading="lazy"
+                        width="1200">
+                    <div class="card-body">
+                        <h3 id="d4">mughalai fried rice — from ₹180</h3>
+                        <p class="card-text">Mughalai fried rice with aromatic spices, tender vegetables, and rich flavors — inspired by royal kitchens</p>
+                        <a class="order-btn" href="https://wa.me/919381963134?text=I%20want%20to%20order%20mughalai%20fried%20rice"
+                            target="_blank" rel="noopener">Order mughlai friedrice</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+        </div>
+        </div>
+
+
+
+    </section>
+
+    <!-- Online partners -->
+    <section class="online" aria-label="order online">
+        <div class="partner">
+            <img src="./zomato.svg" alt="Zomato" loading="lazy">
+            <div><strong>Zomato</strong>
+                <div style="font-size:13px; color:#6b3e2a;">Order via app</div>
+            </div>
+        </div>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <div class="partner">
+            <img src="./swiggy.svg" alt="Swiggy" loading="lazy">
+            <div><strong>Swiggy</strong>
+                <div style="font-size:13px; color:#6b3e2a;">Delivery & pickup</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews" aria-label="reviews">
+        <div class="review">
+            <h4 style="margin:0 0 6px 0;">RAAVI NANI</h4>
+            <p style="margin:0 0 6px;">Food is too good — must try fish pulusu.</p>
+            <div style="color:#ffb84d; font-size:20px;">★★★★</div>
+        </div>
+        <div class="review">
+            <h4 style="margin:0 0 6px 0;">GOOGLE GUIDE</h4>
+            <p style="margin:0 0 6px;">Tender chicken, soulful flavours — comforting and delicious.</p>
+            <div style="color:#ffb84d; font-size:20px;">★★★★</div>
+        </div>
+        <div class="review">
+            <h4 style="margin:0 0 6px 0;">SDT CREATION</h4>
+            <p style="margin:0 0 6px;">Awesome taste and satisfied service.</p>
+            <div style="color:#ffb84d; font-size:20px;">★★★★</div>
+        </div>
+    </section>
+
+    <!-- About / Contact -->
+    <section id="about" class="about" aria-labelledby="about-title">
+        <h3 id="about-title">About Cana Cuisine</h3>
+        <p style="margin-top:8px;">
+            Cana Cuisine in Rajahmundry serves hearty, homemade-taste meals prepared with strict hygiene and fresh local
+            ingredients. We welcome everyone for dine-in, takeaway, and online orders.
+        </p>
+
+        <p id="contact" style="margin-top:10px;">
+            <strong>Call:</strong> <a href="tel:+919381963134">+91 93819 63134</a><br>
+            <strong>Address:</strong> Morampudi, Near Ambedkar Statue, East Godavari Dist, 533101<br>
+            <strong>Social:</strong> <a href="https://www.instagram.com/canacuisineofficial" target="_blank"
+                rel="noopener">Instagram</a>
+        </p>
+    </section>
+
+    <footer>
+        &copy; <strong>Cana Cuisine</strong> — Homemade taste with hygiene. All rights reserved.
+    </footer>
+
+    <!-- Structured data (JSON-LD): update these fields before publishing -->
+    <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Restaurant",
+    "name":"Cana Cuisine",
+    "image":["https://yourdomain.com/images/restaurant-sample.jpg"],
+    "telephone":"+919381963134",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Morampudi, Near Ambedkar Statue",
+      "addressLocality":"Rajahmundry",
+      "addressRegion":"Andhra Pradesh",
+      "postalCode":"533101",
+      "addressCountry":"IN"
+    },
+    "priceRange":"₹₹",
+    "servesCuisine":["Indian","Andhra"],
+    "url":"https://yourusername.github.io/cana-cuisine/",
+    "openingHours":["Mo-Su 00:00-23:59"],
+    "hasMenu": {
+      "@type": "Menu",
+      "name": "Main Menu",
+      "hasMenuSection": [
+        {
+          "@type":"MenuSection",
+          "name":"Main Dishes",
+          "hasMenuItem":[
+            { "@type":"MenuItem", "name":"Chicken Biryani", "description":"Fragrant basmati rice with marinated chicken", "offers": { "@type":"Offer", "price":"220", "priceCurrency":"INR" } },
+            { "@type":"MenuItem", "name":"Chepala Pulusu", "description":"Andhra fish curry with tamarind", "offers": { "@type":"Offer", "price":"180", "priceCurrency":"INR" } },
+            { "@type":"MenuItem", "name":"Fried Rice", "description":"Veg fried rice with house sauces", "offers": { "@type":"Offer", "price":"140", "priceCurrency":"INR" } },
+            { "@type":"MenuItem", "name":"Indian Curries", "description":"Range of curries from mild to spicy", "offers": { "@type":"Offer", "price":"160", "priceCurrency":"INR" } }
+          ]
+        }
+      ]
+    }
+  }
+  </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
